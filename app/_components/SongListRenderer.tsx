@@ -22,7 +22,7 @@ const SongListRenderer: React.FC<SongListRendererProps> = ({
       {songs.map((song: Song, index: number) => (
         <div
           key={song.id}
-          className={`flex items-center cursor-pointer justify-between p-4 my-2 bg-transparent rounded-lg ${
+          className={`flex items-center cursor-pointer justify-between p-4 my-2  rounded-lg ${
             index === currentIndex
               ? "bg-gray-700/80"
               : "bg-transparent hover:bg-gray-300/25"
