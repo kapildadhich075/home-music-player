@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<img width="1710" alt="Screenshot 2024-09-08 at 4 33 45 PM" src="https://github.com/user-attachments/assets/4de9d2b3-7820-44d1-a0ee-45c1791d5b72"># Music Player UI - Next.js Application
 
-## Getting Started
+This project is a **Next.js** music player interface built with **Tailwind CSS**. It matches the provided design, is fully responsive, and dynamically fetches music data from a REST API.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Next.js & Tailwind CSS**: 
+   - Responsive, mobile-friendly UI with fluid animations and transitions.
+   
+2. **REST API Integration**:
+   - Music data and cover images are fetched via the API.
+   - Cover images are loaded from `https://cms.samespace.com/assets/{COVER_IMAGE_ID}`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Dynamic Background Gradient**:
+   - The background color changes based on the current track's cover image.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Music Controls**:
+   - Play/Pause, Next/Previous buttons.
+   - Seeker to scrub through tracks.
+   - Music continues playing when switching tabs.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. **Search & Tab Navigation**:
+   - Search functionality for songs.
+   - Tab navigation between **For You** and **Top Tracks**.
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/music-player-nextjs.git
+   cd music-player-nextjs
+2. Install dependencies:
+    ```bash
+    npm install
+3. Run the development server:
+   ```bash
+   npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Uploading Screenshot 2024-09-08 at 4.33.45 PM.png…]()
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
