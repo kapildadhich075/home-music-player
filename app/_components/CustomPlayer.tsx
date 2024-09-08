@@ -32,12 +32,14 @@ const CustomAudioPlayer = ({
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
+    // Add event listeners for time update, metadata load, and audio end
     if (audioRef.current) {
       audioRef.current.addEventListener("timeupdate", handleTimeUpdate);
       audioRef.current.addEventListener("loadedmetadata", handleLoadedMetadata);
       audioRef.current.addEventListener("ended", handleEnded);
     }
 
+    // Clean up event listeners when component unmounts
     return () => {
       if (audioRef.current) {
         audioRef.current.removeEventListener("timeupdate", handleTimeUpdate);
@@ -51,6 +53,7 @@ const CustomAudioPlayer = ({
   }, []);
 
   useEffect(() => {
+    // Play or pause audio based on isPlaying state
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.play();
@@ -61,27 +64,32 @@ const CustomAudioPlayer = ({
   }, [isPlaying, currentIndex]);
 
   const handleTimeUpdate = () => {
+    // Update current time when audio time updates
     if (audioRef.current) {
       setCurrentTime(audioRef.current.currentTime);
     }
   };
 
   const handleLoadedMetadata = () => {
+    // Set duration when audio metadata is loaded
     if (audioRef.current) {
       setDuration(audioRef.current.duration);
     }
   };
 
   const handleEnded = () => {
+    // Set isPlaying to false and go to next song when audio ends
     setIsPlaying(false);
     handleNext();
   };
 
   const togglePlayPause = () => {
+    // Toggle isPlaying state
     setIsPlaying(!isPlaying);
   };
 
   const toggleMute = () => {
+    // Toggle isMuted state and mute/unmute audio
     setIsMuted(!isMuted);
     if (audioRef.current) {
       audioRef.current.muted = !isMuted;
@@ -89,6 +97,7 @@ const CustomAudioPlayer = ({
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Handle seeking to a specific time in the audio
     const seekTime = parseFloat(e.target.value);
     setCurrentTime(seekTime);
     if (audioRef.current) {

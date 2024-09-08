@@ -1,4 +1,3 @@
-// SongList.tsx
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Song } from "../_hooks/useFetchSongs";
 import { SearchBar } from "./SearchBar";
@@ -7,11 +6,11 @@ import { SearchBar } from "./SearchBar";
 const SongListRenderer = lazy(() => import("./SongListRenderer"));
 
 interface SongListProps {
-  songs: Song[];
-  currentIndex: number;
-  setCurrentIndex: (index: number) => void;
-  type: "For You" | "Top Tracks";
-  setType: (type: "For You" | "Top Tracks") => void;
+  songs: Song[]; // Array of songs
+  currentIndex: number; // Index of the currently selected song
+  setCurrentIndex: (index: number) => void; // Function to set the current index
+  type: "For You" | "Top Tracks"; // Type of song list
+  setType: (type: "For You" | "Top Tracks") => void; // Function to set the type
 }
 
 const SongList: React.FC<SongListProps> = ({
@@ -21,10 +20,10 @@ const SongList: React.FC<SongListProps> = ({
   type,
   setType,
 }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredSongs, setFilteredSongs] = useState<Song[]>(songs);
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [filteredSongs, setFilteredSongs] = useState<Song[]>(songs); // State for filtered songs
   const [songDurations, setSongDurations] = useState<{ [key: string]: number }>(
-    {}
+    {} // State for song durations
   );
 
   useEffect(() => {
@@ -65,9 +64,10 @@ const SongList: React.FC<SongListProps> = ({
   };
 
   return (
-    <div className="flex flex-col w-1/4 justify-start h-screen p-10 mt-2">
+    <div className="flex flex-col w-1/4 justify-start p-10 mt-2 h-screen">
       <div className="flex flex-col justify-between">
         <div className="flex gap-5 p-4">
+          {/* Button to set type as "For You" */}
           <button
             onClick={() => setType("For You")}
             className={`${
@@ -78,6 +78,7 @@ const SongList: React.FC<SongListProps> = ({
           >
             For You
           </button>
+          {/* Button to set type as "Top Tracks" */}
           <button
             onClick={() => setType("Top Tracks")}
             className={`${
@@ -90,6 +91,7 @@ const SongList: React.FC<SongListProps> = ({
           </button>
         </div>
 
+        {/* Search bar component */}
         <SearchBar
           searchQuery={searchQuery}
           handleSearchChange={handleSearchChange}
@@ -110,6 +112,7 @@ const SongList: React.FC<SongListProps> = ({
             </div>
           }
         >
+          {/* Lazy loaded SongListRenderer component */}
           <SongListRenderer
             songs={
               type === "For You"

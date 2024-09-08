@@ -53,9 +53,10 @@ const MusicPlayer = () => {
   };
 
   if (loading) {
+    // Display loading spinner if data is still loading
     return (
       <div className="flex justify-center items-center h-screen bg-gradient-to-br from-slate-700 to-black animate-bg-fade">
-        <div className="relative h-10 w-10 ">
+        <div className="relative h-10 w-10">
           <div className="absolute inset-0 rounded-full border-4 border-slate-300 animate-spin"></div>
           <div
             className="absolute inset-0 rounded-full border-4 border-transparent border-t-white animate-spin"
@@ -67,6 +68,7 @@ const MusicPlayer = () => {
   }
 
   if (error) {
+    // Display error message if there is an error fetching data
     return (
       <div className="flex text-white text-4xl justify-center items-center h-screen bg-gradient-to-br from-slate-700 to-black animate-bg-fade">
         Error: {error}
@@ -75,7 +77,7 @@ const MusicPlayer = () => {
   }
 
   return (
-    <div className="flex flex-row items-center bg-gradient-to-br from-slate-700 to-black text-white min-h-screen overflow-y-scroll overflow-x-hidden">
+    <div className="flex flex-row items-center bg-gradient-to-br from-slate-700 to-black text-white h-screen overflow-y-scroll overflow-x-hidden">
       <div className="flex flex-col items-center w-1/4 h-screen justify-between p-8 top-0 z-20">
         <MusicLogo />
         <ProfileImage />
