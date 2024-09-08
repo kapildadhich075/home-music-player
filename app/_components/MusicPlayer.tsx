@@ -14,7 +14,7 @@ const MusicPlayer = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [type, setType] = useState("For You");
+  const [type, setType] = useState<"For You" | "Top Tracks">("For You");
   const [searchQuery] = useState("");
 
   // Remove the .data access, as songs is already an array
