@@ -3,10 +3,8 @@
 import { useRef, useState, useMemo } from "react";
 import useFetchSongs, { Song } from "../_hooks/useFetchSongs";
 import { MusicLogo, ProfileImage } from "./Logo";
-
 import CustomAudioPlayer from "./CustomPlayer";
 import SongList from "./SongList";
-import { BiCircle } from "react-icons/bi";
 
 const MusicPlayer = () => {
   const { songs, loading, error } = useFetchSongs(
@@ -14,15 +12,13 @@ const MusicPlayer = () => {
   );
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [isPlaying] = useState(true); // Initially set to false
-
+  const [isPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
-
   const [type, setType] = useState("For You");
-
   const [searchQuery] = useState("");
 
-  const songList = useMemo(() => songs?.data || [], [songs?.data]);
+  // Remove the .data access, as songs is already an array
+  const songList = useMemo(() => songs || [], [songs]);
 
   const filteredSongs = useMemo(() => {
     if (type === "Top Tracks") {
@@ -71,21 +67,16 @@ const MusicPlayer = () => {
   }
 
   if (error) {
-    return <div>Error fetching songs</div>;
+    return (
+      <div className="flex justify-center items-center h-screen bg-gradient-to-br from-slate-700 to-black animate-bg-fade">
+        Error: {error}
+      </div>
+    );
   }
 
   return (
-    <div
-      className="flex flex-row items-center bg-gradient-to-br from-slate-700 to-black text-white min-h-screen
-      overflow-y-scroll 
-      overflow-x-hidden
-    "
-    >
-      <div
-        className="flex flex-col items-center 
-        w-1/4 h-screen justify-between p-8 top-0 z-20
-      "
-      >
+    <div className="flex flex-row items-center bg-gradient-to-br from-slate-700 to-black text-white min-h-screen overflow-y-scroll overflow-x-hidden">
+      <div className="flex flex-col items-center w-1/4 h-screen justify-between p-8 top-0 z-20">
         <MusicLogo />
         <ProfileImage />
       </div>

@@ -17,6 +17,10 @@ export interface Song {
   top_track: boolean;
 }
 
+interface ApiResponse {
+  data: Song[];
+}
+
 const useFetchSongs = (url: string) => {
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,8 +29,8 @@ const useFetchSongs = (url: string) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url);
-        setSongs(response.data);
+        const response = await axios.get<ApiResponse>(url);
+        setSongs(response.data.data); // Access the 'data' property of the response
         setLoading(false);
       } catch (err) {
         setError("Error fetching songs");
