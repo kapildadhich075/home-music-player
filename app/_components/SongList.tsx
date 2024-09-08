@@ -120,6 +120,7 @@ const SongList: React.FC<SongListProps> = ({
             setCurrentIndex={setCurrentIndex}
             songDurations={songDurations}
             formatDuration={formatDuration}
+            originalSongs={songs}
           />
         </Suspense>
       </div>
