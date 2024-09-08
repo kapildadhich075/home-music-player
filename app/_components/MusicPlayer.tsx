@@ -68,7 +68,7 @@ const MusicPlayer = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-screen bg-gradient-to-br from-slate-700 to-black animate-bg-fade">
+      <div className="flex text-white text-4xl justify-center items-center h-screen bg-gradient-to-br from-slate-700 to-black animate-bg-fade">
         Error: {error}
       </div>
     );
