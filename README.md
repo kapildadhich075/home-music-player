@@ -36,7 +36,6 @@ This project is a **Next.js** music player interface built with **Tailwind CSS**
    ```bash
    npm run dev
 
-![Uploading Screenshot 2024-09-08 at 4.33.45 PM.png…]()
 
 
 
