@@ -95,7 +95,21 @@ const SongList: React.FC<SongListProps> = ({
           handleSearchChange={handleSearchChange}
         />
 
-        <Suspense fallback={<div className="text-white">Loading songs...</div>}>
+        <Suspense
+          fallback={
+            <div className="flex justify-center items-center mt-10  animate-bg-fade">
+              <div className="text-white">
+                <div className="relative h-10 w-10 ">
+                  <div className="absolute inset-0 rounded-full border-4 border-slate-300 animate-spin"></div>
+                  <div
+                    className="absolute inset-0 rounded-full border-4 border-transparent border-t-white animate-spin"
+                    style={{ animationDuration: "1s" }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          }
+        >
           <SongListRenderer
             songs={
               type === "For You"
