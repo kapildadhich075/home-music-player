@@ -24,8 +24,8 @@ const SongListRenderer: React.FC<SongListRendererProps> = ({
           key={song.id}
           className={`flex items-center cursor-pointer justify-between p-4 my-2  rounded-lg ${
             index === currentIndex
-              ? "bg-gray-700/80"
-              : "bg-transparent hover:bg-gray-300/25"
+              ? "bg-gray-300/25"
+              : "bg-transparent hover:bg-gray-700/80"
           }`}
           onClick={() => setCurrentIndex(index)}
         >
